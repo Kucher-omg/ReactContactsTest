@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import Header from './components/Header/Header';
 import ContactsContainer from './components/Contacts/ContactsContainer';
 import FavouriteContainer from './components/Favourite/FavouriteContainer';
@@ -22,4 +21,4 @@ const App = () => {
     );
 }
 
-export default App;
+export default withRouter(App);
