@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import ContactsContainer from './components/Contacts/ContactsContainer';
 import FavouriteContainer from './components/Favourite/FavouriteContainer';
+import Edit from './components/Edit/EditContainer';
 
 const App = () => {
     return(
@@ -14,6 +15,7 @@ const App = () => {
         <div>
           <Route path='/contacts' render={() => <ContactsContainer />}/>          
           <Route path='/favcontacts' render={() => <FavouriteContainer />}/>
+          <Route path='/edit' render={() => <Edit />} />
         </div>
         
       </div>

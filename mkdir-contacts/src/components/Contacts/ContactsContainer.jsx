@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { editCardAC, createCardAC, isFavouriteAC } from "../../redux/contacts-reducer";
+import { editCardAC, createCardAC, isFavouriteAC, deleteCardAC, editIdAC } from "../../redux/contacts-reducer";
 import Contacts from "./Contacts";
 
 const mapStateToProps = (state) => {
@@ -11,5 +11,7 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
     editCard: editCardAC,
     createCard: createCardAC,
-    isFavourite: isFavouriteAC
+    isFavourite: isFavouriteAC,
+    deleteCard: deleteCardAC,
+    editId: editIdAC
 })(Contacts);

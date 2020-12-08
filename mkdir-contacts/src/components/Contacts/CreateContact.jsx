@@ -1,37 +1,37 @@
 import React, { useEffect } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { reset, Field, reduxForm } from 'redux-form';
 
 
-const CreateContact = (props) => {
+const CreateContact = React.memo(props => {
    
     useEffect(()=>{
         let items = JSON.parse(localStorage.getItem('contacts'));
-        if(items){
+        if(items !== null && items.length !== props.cards.length){
             items.forEach((item, index) => {
                 props.createCard(items[index]);
+                
             });
-            
         }
     },[]);
 
-    let onSubmit = (value) => {
+    let onSubmit = (value, dispatch) => {
         let id = `f${(~~(Math.random()*1e8)).toString(16)}`;
         value.id = id;
         if(!value.isFavourite) value.isFavourite = false;
         let fullCard = value;
         localStorage.setItem('contacts', JSON.stringify([...props.cards, fullCard]));
         props.createCard(fullCard);
-       
+        dispatch(reset("contact"));
     }
     return (
         <div>
             <ContactForm onSubmit={onSubmit} />
         </div>
     );
-}
+});
 
 let ContactForm = props => {
-    const { handleSubmit, reset } = props
+    const { handleSubmit } = props
     return (
         <form onSubmit={handleSubmit}>
             <div>
